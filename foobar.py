@@ -31,16 +31,32 @@ class DitSeries:
         - La valeur renvoyée est de type DitSeries
         - Chaque élément de la série est divisé par l'argument
         """
+        new_objet = self.data
+        for cle in self.data.keys():
+            new_objet.update({cle:(self.data[cle]/other)})       
+        return DitSeries(self.name, new_objet)
 
     def __sub__(self, other: int) -> "DitSeries":
         """Soustraction """
+        new_objet = self.data
+        for cle in self.data.keys():
+            new_objet.update({cle:(self.data[cle]-other)})       
+        return DitSeries(self.name, new_objet)
 
 
     def __add__(self, other: int) -> "DitSeries":
         """Addition"""
+        new_objet = self.data
+        for cle in self.data.keys():
+            new_objet.update({cle:(self.data[cle]+other)})       
+        return DitSeries(self.name, new_objet)
 
     def __gt__(self, other: int) -> "DitSeries":
         """Comparaison (supérieur) """
+        new_objet = self.data
+        for cle in self.data.keys():
+            new_objet.update({cle:(self.data[cle]>other)})       
+        return DitSeries(self.name, new_objet)
 
     def __getitem__(self, key: "DitSeries") -> "DitSeries":
         """ """
@@ -93,6 +109,7 @@ if __name__ == "__main__":
 
     ds2 = ds * 2
     print(ds2)    # <DitSeries: serie {0: 90, 1: 92, 2: 94}>
+
 
     ds3 = ds2 + 5
     print(ds3)    # <DitSeries: serie {0: 95, 1: 97, 2: 99}>
