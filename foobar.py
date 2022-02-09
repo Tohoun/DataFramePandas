@@ -59,6 +59,7 @@ class DitSeries:
 
     def __getitem__(self, key: "DitSeries") -> "DitSeries":
         """ """
+        return self.data[key]
 
     def __repr__(self) -> str:
         """ Affiche une representation de l'objet DitSeries. """
